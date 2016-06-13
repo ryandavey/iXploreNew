@@ -14,8 +14,17 @@ class MainViewController: UIViewController, UITableViewDelegate, UITableViewData
     @IBOutlet weak var mapView: MKMapView!
     @IBOutlet weak var tableView: UITableView!
     
+    var deletePlaceIndexPath: NSIndexPath? = nil
     
     var placeList: [Place] = Place.placeList()
+    
+    override func viewDidLoad() {
+        super.viewDidLoad()
+        // Do any additional setup after loading the view, typically from a nib.
+        
+        setupMapView()
+        setupTableView()
+    }
     
     func setupMapView () {
         self.mapView.mapType = .Hybrid
@@ -49,33 +58,78 @@ class MainViewController: UIViewController, UITableViewDelegate, UITableViewData
     
     func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
         
+        let currentDate = NSDate()
+        let dateFormatter = NSDateFormatter()
+        dateFormatter.locale = NSLocale.currentLocale()
+        dateFormatter.dateFormat = "MM/dd/yyyy HH:mm"
+        let convertedDate = dateFormatter.stringFromDate(currentDate)
         
-        var cell = tableView.dequeueReusableCellWithIdentifier("PlaceTableViewCell") as? PlaceTableViewCell
-        
-//        if var placecell = cell {
-//            cell!.textLabel?.text = self.placeList[indexPath.row].title
-//        } else {
-            //cell = PlaceTableViewCell()
+        let cell = tableView.dequeueReusableCellWithIdentifier("PlaceTableViewCell") as? PlaceTableViewCell
         let place = placeList[indexPath.row]
-            cell!.placeLabel?.text = self.placeList[indexPath.row].title
-            cell!.imageView!.imageFromUrl(place.logoURL!)
-        //}
+        cell!.dateLabel.text = convertedDate
+        cell!.placeLabel?.text = self.placeList[indexPath.row].title
+        cell!.imageView!.imageFromUrl(place.logoURL!)
         return cell!
     }
     
     func tableView(tableView: UITableView, heightForRowAtIndexPath indexPath: NSIndexPath) -> CGFloat {
-        return CGFloat(88)
+            return CGFloat(88)
     }
     
-    override func viewDidLoad() {
-        super.viewDidLoad()
-        // Do any additional setup after loading the view, typically from a nib.
+    func tableView(tableView: UITableView, commitEditingStyle editingStyle: UITableViewCellEditingStyle, forRowAtIndexPath indexPath: NSIndexPath) {
+        if editingStyle == .Delete {
+            deletePlaceIndexPath = indexPath
+            let placeToDelete = String(placeList[indexPath.row])
+            confirmDelete(placeToDelete)
+        }
+    }
+    func confirmDelete(place: String) {
+        let alert = UIAlertController(title: "Delete Planet", message: "Are you sure you want to permanently delete \(place)?", preferredStyle: .ActionSheet)
         
-        setupMapView()
-        setupTableView()
+        let DeleteAction = UIAlertAction(title: "Delete", style: .Destructive, handler: handleDeletePlace)
+        let CancelAction = UIAlertAction(title: "Cancel", style: .Cancel, handler: cancelDeletePlace)
+        
+        alert.addAction(DeleteAction)
+        alert.addAction(CancelAction)
+        
+        // Support display in iPad
+        alert.popoverPresentationController?.sourceView = self.view
+        alert.popoverPresentationController?.sourceRect = CGRectMake(self.view.bounds.size.width / 2.0, self.view.bounds.size.height / 2.0, 1.0, 1.0)
+        
+        self.presentViewController(alert, animated: true, completion: nil)
     }
     
-    //func tableView(tableView)
+    func handleDeletePlace(alertAction: UIAlertAction!) -> Void {
+        if let indexPath = deletePlaceIndexPath {
+            tableView.beginUpdates()
+            
+            placeList.removeAtIndex(indexPath.row)
+            
+            // Note that indexPath is wrapped in an array:  [indexPath]
+            tableView.deleteRowsAtIndexPaths([indexPath], withRowAnimation: .Automatic)
+            
+            deletePlaceIndexPath = nil
+            
+            tableView.endUpdates()
+        }
+    }
+    
+    func cancelDeletePlace(alertAction: UIAlertAction!) {
+        deletePlaceIndexPath = nil
+    }
+    
+//    func mapView(mapView: MKMapView, viewForAnnotation annotation: MKAnnotation) -> MKAnnotationView? {
+//        let annotationView = MKAnnotationView()
+//        let place: Place = annotation as! Place
+//        if (place.favorite != nil) {
+//            if place.favorite! {
+//                annotationView.tintColor = UIColor.yellowColor()
+//            } else {
+//                annotationView.tintColor = UIColor.redColor()
+//            }
+//        return annotationView
+//        }
+//    }
     
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()

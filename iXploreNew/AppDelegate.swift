@@ -21,6 +21,9 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         let mainViewController = MainViewController(nibName: "MainViewController", bundle:nil)
         mainNavigationController = UINavigationController(rootViewController: mainViewController)
         self.window?.rootViewController = self.mainNavigationController
+        
+        self.window?.makeKeyAndVisible()
+        
         self.mainNavigationController?.navigationBarHidden = true
         
         return true
