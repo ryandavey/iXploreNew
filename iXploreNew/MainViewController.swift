@@ -21,7 +21,7 @@ class MainViewController: UIViewController, UITableViewDelegate, UITableViewData
     override func viewDidLoad() {
         super.viewDidLoad()
         // Do any additional setup after loading the view, typically from a nib.
-        
+        self.mapView.delegate = self
         setupMapView()
         setupTableView()
     }
@@ -33,8 +33,9 @@ class MainViewController: UIViewController, UITableViewDelegate, UITableViewData
     func setupTableView () {
         self.tableView.delegate = self
         self.tableView.dataSource = self
-        let nib: UINib = UINib(nibName: "PlaceTableViewCell", bundle: nil)
-        tableView.registerNib(nib, forCellReuseIdentifier: "PlaceTableViewCell")
+        self.tableView.registerClass(PlaceTableViewCell.self, forCellReuseIdentifier: "PlaceTableViewCell")
+//        let nib: UINib = UINib(nibName: "PlaceTableViewCell", bundle: nil)
+//        tableView.registerNib(nib, forCellReuseIdentifier: "PlaceTableViewCell")
     }
     
     
@@ -59,18 +60,23 @@ class MainViewController: UIViewController, UITableViewDelegate, UITableViewData
     func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
         
         let currentDate = NSDate()
+        
+        //Get date
         let dateFormatter = NSDateFormatter()
         dateFormatter.locale = NSLocale.currentLocale()
         dateFormatter.dateFormat = "MM/dd/yyyy HH:mm"
         let convertedDate = dateFormatter.stringFromDate(currentDate)
         
+        // get cell and setup contents
         let cell = tableView.dequeueReusableCellWithIdentifier("PlaceTableViewCell") as? PlaceTableViewCell
-        let place = placeList[indexPath.row]
-        cell!.dateLabel.text = convertedDate
-        cell!.placeLabel?.text = self.placeList[indexPath.row].title
-        cell!.imageView!.imageFromUrl(place.logoURL!)
+       let place = placeList[indexPath.row]
+        cell!.dateLabel!.text = convertedDate
+        cell!.placeLabel!.text = self.placeList[indexPath.row].title
+        cell!.placeView!.image = UIImage(named: place.logoURL!)
+        cell!.descriptionField!.text = self.placeList[indexPath.row].detail
         return cell!
     }
+    
     
     func tableView(tableView: UITableView, heightForRowAtIndexPath indexPath: NSIndexPath) -> CGFloat {
             return CGFloat(88)
@@ -81,6 +87,7 @@ class MainViewController: UIViewController, UITableViewDelegate, UITableViewData
             deletePlaceIndexPath = indexPath
             let placeToDelete = String(placeList[indexPath.row])
             confirmDelete(placeToDelete)
+            mapView.removeAnnotation(placeList[indexPath.row])
         }
     }
     func confirmDelete(place: String) {
@@ -118,24 +125,74 @@ class MainViewController: UIViewController, UITableViewDelegate, UITableViewData
         deletePlaceIndexPath = nil
     }
     
-//    func mapView(mapView: MKMapView, viewForAnnotation annotation: MKAnnotation) -> MKAnnotationView? {
-//        let annotationView = MKAnnotationView()
-//        let place: Place = annotation as! Place
-//        if (place.favorite != nil) {
-//            if place.favorite! {
-//                annotationView.tintColor = UIColor.yellowColor()
-//            } else {
-//                annotationView.tintColor = UIColor.redColor()
-//            }
-//        return annotationView
-//        }
-//    }
+    func mapView(mapView: MKMapView!,viewForAnnotation annotation: MKAnnotation!) -> MKAnnotationView! {
+        
+        if annotation is MKUserLocation {
+            //return nil so map view draws "blue dot" for standard user location
+            return nil
+        }
+        
+        let reuseId = "pin"
+        
+        var pinView = mapView.dequeueReusableAnnotationViewWithIdentifier(reuseId) as? MKPinAnnotationView
+        if pinView == nil {
+            pinView = MKPinAnnotationView(annotation: annotation, reuseIdentifier: reuseId)
+            pinView!.canShowCallout = true
+            pinView!.animatesDrop = true
+            
+            let place: Place = annotation as! Place
+            if (place.favorite != nil) {
+                if place.favorite! == true {
+                    pinView!.pinTintColor = UIColor.yellowColor()
+                } else {
+                    pinView!.pinTintColor = UIColor.redColor()
+                }
+            } else {
+            pinView!.annotation = annotation
+            }
+    }
+        return pinView
+}
+    func favoritePlace (indexPath: NSIndexPath) {
+        mapView.removeAnnotation(placeList[indexPath.row])
+        
+        
+        mapView.addAnnotation(placeList[indexPath.row])
+        placeList[indexPath.row].favorite = true
+    }
+    func deletePlace (indexPath: NSIndexPath) {
+        mapView.removeAnnotation(placeList[indexPath.row])
+        placeList.removeAtIndex(indexPath.row)
+        tableView.deleteRowsAtIndexPaths([indexPath], withRowAnimation: .Fade)
+    }
     
+    func tableView(tableView: UITableView, canEditRowAtIndexPath indexPath: NSIndexPath) -> Bool {
+        return true
+    }
+    
+    // This is a generic implementation of the table data source method for adding row actions.
+    // Adapt it to match your needs.
+    func tableView(tableView: UITableView, editActionsForRowAtIndexPath indexPath: NSIndexPath) -> [UITableViewRowAction]? {
+        
+        let action1 = UITableViewRowAction(style: .Normal, title: "Favorite") { action, index in
+            self.favoritePlace(indexPath)
+            print("Action 1 tapped")
+        }
+        action1.backgroundColor = UIColor.orangeColor()
+        
+        let action2 = UITableViewRowAction(style: .Normal, title: "Delete") { action, index in
+            self.deletePlace(indexPath)
+            print("Action 2 tapped")
+        }
+        action2.backgroundColor = UIColor.redColor()
+        
+        return [action1, action2]
+    }
+
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
         // Dispose of any resources that can be recreated.
     }
-    
     
 }
 

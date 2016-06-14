@@ -7,7 +7,12 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
-		D91902A11D0F16B100CE100D /* PlaceTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = D91902A01D0F16B100CE100D /* PlaceTableViewCell.xib */; };
+		D91902A31D100C7C00CE100D /* stadium.jpeg in Resources */ = {isa = PBXBuildFile; fileRef = D91902A21D100C7C00CE100D /* stadium.jpeg */; };
+		D91902A81D100C8A00CE100D /* Coffee.png in Resources */ = {isa = PBXBuildFile; fileRef = D91902A41D100C8A00CE100D /* Coffee.png */; };
+		D91902A91D100C8A00CE100D /* images.jpeg in Resources */ = {isa = PBXBuildFile; fileRef = D91902A51D100C8A00CE100D /* images.jpeg */; };
+		D91902AA1D100C8A00CE100D /* ix.png in Resources */ = {isa = PBXBuildFile; fileRef = D91902A61D100C8A00CE100D /* ix.png */; };
+		D91902AB1D100C8A00CE100D /* truthcoffee.png in Resources */ = {isa = PBXBuildFile; fileRef = D91902A71D100C8A00CE100D /* truthcoffee.png */; };
+		D91902AD1D100E0400CE100D /* UserController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D91902AC1D100E0400CE100D /* UserController.swift */; };
 		D92E33DE1D084D7300BF7AD4 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = D92E33DD1D084D7300BF7AD4 /* AppDelegate.swift */; };
 		D92E33E51D084D7300BF7AD4 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = D92E33E41D084D7300BF7AD4 /* Assets.xcassets */; };
 		D92E33E81D084D7300BF7AD4 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = D92E33E61D084D7300BF7AD4 /* LaunchScreen.storyboard */; };
@@ -16,10 +21,23 @@
 		D92E33F41D08633700BF7AD4 /* MainViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = D92E33F21D08633700BF7AD4 /* MainViewController.xib */; };
 		D92E33F61D088C8B00BF7AD4 /* Place.swift in Sources */ = {isa = PBXBuildFile; fileRef = D92E33F51D088C8B00BF7AD4 /* Place.swift */; };
 		D92E33F91D08B39D00BF7AD4 /* PlaceTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = D92E33F71D08B39D00BF7AD4 /* PlaceTableViewCell.swift */; };
+		D969C17B1D100ED100F60A49 /* LoggedInViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D969C1711D100ED100F60A49 /* LoggedInViewController.swift */; };
+		D969C17C1D100ED100F60A49 /* LoggedInViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = D969C1721D100ED100F60A49 /* LoggedInViewController.xib */; };
+		D969C17D1D100ED100F60A49 /* LandingViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D969C1741D100ED100F60A49 /* LandingViewController.swift */; };
+		D969C17E1D100ED100F60A49 /* LandingViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = D969C1751D100ED100F60A49 /* LandingViewController.xib */; };
+		D969C17F1D100ED100F60A49 /* LoginViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D969C1761D100ED100F60A49 /* LoginViewController.swift */; };
+		D969C1801D100ED100F60A49 /* LoginViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = D969C1771D100ED100F60A49 /* LoginViewController.xib */; };
+		D969C1811D100ED100F60A49 /* RegistrationViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D969C1781D100ED100F60A49 /* RegistrationViewController.swift */; };
+		D969C1821D100ED100F60A49 /* RegistrationViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = D969C1791D100ED100F60A49 /* RegistrationViewController.xib */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
-		D91902A01D0F16B100CE100D /* PlaceTableViewCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; name = PlaceTableViewCell.xib; path = ../../../.Trash/PlaceTableViewCell.xib; sourceTree = "<group>"; };
+		D91902A21D100C7C00CE100D /* stadium.jpeg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; name = stadium.jpeg; path = ../../../Desktop/stadium.jpeg; sourceTree = "<group>"; };
+		D91902A41D100C8A00CE100D /* Coffee.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = Coffee.png; path = ../../../Desktop/Coffee.png; sourceTree = "<group>"; };
+		D91902A51D100C8A00CE100D /* images.jpeg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; name = images.jpeg; path = ../../../Desktop/images.jpeg; sourceTree = "<group>"; };
+		D91902A61D100C8A00CE100D /* ix.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = ix.png; path = ../../../Desktop/ix.png; sourceTree = "<group>"; };
+		D91902A71D100C8A00CE100D /* truthcoffee.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = truthcoffee.png; path = ../../../Desktop/truthcoffee.png; sourceTree = "<group>"; };
+		D91902AC1D100E0400CE100D /* UserController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UserController.swift; sourceTree = "<group>"; };
 		D92E33DA1D084D7300BF7AD4 /* iXploreNew.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = iXploreNew.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		D92E33DD1D084D7300BF7AD4 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		D92E33E41D084D7300BF7AD4 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
@@ -30,6 +48,14 @@
 		D92E33F21D08633700BF7AD4 /* MainViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = MainViewController.xib; sourceTree = "<group>"; };
 		D92E33F51D088C8B00BF7AD4 /* Place.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Place.swift; sourceTree = "<group>"; };
 		D92E33F71D08B39D00BF7AD4 /* PlaceTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PlaceTableViewCell.swift; sourceTree = "<group>"; };
+		D969C1711D100ED100F60A49 /* LoggedInViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LoggedInViewController.swift; sourceTree = "<group>"; };
+		D969C1721D100ED100F60A49 /* LoggedInViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = LoggedInViewController.xib; sourceTree = "<group>"; };
+		D969C1741D100ED100F60A49 /* LandingViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LandingViewController.swift; sourceTree = "<group>"; };
+		D969C1751D100ED100F60A49 /* LandingViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = LandingViewController.xib; sourceTree = "<group>"; };
+		D969C1761D100ED100F60A49 /* LoginViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LoginViewController.swift; sourceTree = "<group>"; };
+		D969C1771D100ED100F60A49 /* LoginViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = LoginViewController.xib; sourceTree = "<group>"; };
+		D969C1781D100ED100F60A49 /* RegistrationViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RegistrationViewController.swift; sourceTree = "<group>"; };
+		D969C1791D100ED100F60A49 /* RegistrationViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = RegistrationViewController.xib; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -44,6 +70,27 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		D91902AE1D100E3A00CE100D /* Images */ = {
+			isa = PBXGroup;
+			children = (
+				D91902A21D100C7C00CE100D /* stadium.jpeg */,
+				D91902A41D100C8A00CE100D /* Coffee.png */,
+				D91902A51D100C8A00CE100D /* images.jpeg */,
+				D91902A61D100C8A00CE100D /* ix.png */,
+				D91902A71D100C8A00CE100D /* truthcoffee.png */,
+			);
+			name = Images;
+			sourceTree = "<group>";
+		};
+		D91902AF1D100E5700CE100D /* Place Info */ = {
+			isa = PBXGroup;
+			children = (
+				D92E33F51D088C8B00BF7AD4 /* Place.swift */,
+				D92E33F71D08B39D00BF7AD4 /* PlaceTableViewCell.swift */,
+			);
+			name = "Place Info";
+			sourceTree = "<group>";
+		};
 		D92E33D11D084D7300BF7AD4 = {
 			isa = PBXGroup;
 			children = (
@@ -65,16 +112,42 @@
 			isa = PBXGroup;
 			children = (
 				D92E33DD1D084D7300BF7AD4 /* AppDelegate.swift */,
-				D92E33F51D088C8B00BF7AD4 /* Place.swift */,
+				D91902AC1D100E0400CE100D /* UserController.swift */,
+				D969C1731D100ED100F60A49 /* LoggedIn */,
+				D969C17A1D100ED100F60A49 /* Authentication */,
+				D91902AF1D100E5700CE100D /* Place Info */,
+				D91902AE1D100E3A00CE100D /* Images */,
 				D92E33E41D084D7300BF7AD4 /* Assets.xcassets */,
 				D92E33E61D084D7300BF7AD4 /* LaunchScreen.storyboard */,
 				D92E33E91D084D7300BF7AD4 /* Info.plist */,
 				D92E33F11D08633700BF7AD4 /* MainViewController.swift */,
 				D92E33F21D08633700BF7AD4 /* MainViewController.xib */,
-				D92E33F71D08B39D00BF7AD4 /* PlaceTableViewCell.swift */,
-				D91902A01D0F16B100CE100D /* PlaceTableViewCell.xib */,
 			);
 			path = iXploreNew;
+			sourceTree = "<group>";
+		};
+		D969C1731D100ED100F60A49 /* LoggedIn */ = {
+			isa = PBXGroup;
+			children = (
+				D969C1711D100ED100F60A49 /* LoggedInViewController.swift */,
+				D969C1721D100ED100F60A49 /* LoggedInViewController.xib */,
+			);
+			name = LoggedIn;
+			path = ../../Onboarding/Onboarding;
+			sourceTree = "<group>";
+		};
+		D969C17A1D100ED100F60A49 /* Authentication */ = {
+			isa = PBXGroup;
+			children = (
+				D969C1741D100ED100F60A49 /* LandingViewController.swift */,
+				D969C1751D100ED100F60A49 /* LandingViewController.xib */,
+				D969C1761D100ED100F60A49 /* LoginViewController.swift */,
+				D969C1771D100ED100F60A49 /* LoginViewController.xib */,
+				D969C1781D100ED100F60A49 /* RegistrationViewController.swift */,
+				D969C1791D100ED100F60A49 /* RegistrationViewController.xib */,
+			);
+			name = Authentication;
+			path = ../../Onboarding/Onboarding;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -141,10 +214,18 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				D969C17E1D100ED100F60A49 /* LandingViewController.xib in Resources */,
 				D92E33E81D084D7300BF7AD4 /* LaunchScreen.storyboard in Resources */,
+				D969C1801D100ED100F60A49 /* LoginViewController.xib in Resources */,
+				D91902AB1D100C8A00CE100D /* truthcoffee.png in Resources */,
 				D92E33E51D084D7300BF7AD4 /* Assets.xcassets in Resources */,
+				D91902AA1D100C8A00CE100D /* ix.png in Resources */,
 				D92E33F41D08633700BF7AD4 /* MainViewController.xib in Resources */,
-				D91902A11D0F16B100CE100D /* PlaceTableViewCell.xib in Resources */,
+				D91902A81D100C8A00CE100D /* Coffee.png in Resources */,
+				D969C17C1D100ED100F60A49 /* LoggedInViewController.xib in Resources */,
+				D969C1821D100ED100F60A49 /* RegistrationViewController.xib in Resources */,
+				D91902A31D100C7C00CE100D /* stadium.jpeg in Resources */,
+				D91902A91D100C8A00CE100D /* images.jpeg in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -156,7 +237,12 @@
 			buildActionMask = 2147483647;
 			files = (
 				D92E33F31D08633700BF7AD4 /* MainViewController.swift in Sources */,
+				D969C17D1D100ED100F60A49 /* LandingViewController.swift in Sources */,
 				D92E33DE1D084D7300BF7AD4 /* AppDelegate.swift in Sources */,
+				D969C1811D100ED100F60A49 /* RegistrationViewController.swift in Sources */,
+				D91902AD1D100E0400CE100D /* UserController.swift in Sources */,
+				D969C17F1D100ED100F60A49 /* LoginViewController.swift in Sources */,
+				D969C17B1D100ED100F60A49 /* LoggedInViewController.swift in Sources */,
 				D92E33F61D088C8B00BF7AD4 /* Place.swift in Sources */,
 				D92E33F91D08B39D00BF7AD4 /* PlaceTableViewCell.swift in Sources */,
 			);

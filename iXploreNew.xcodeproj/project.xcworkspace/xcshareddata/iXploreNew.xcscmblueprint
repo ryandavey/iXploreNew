@@ -1,0 +1,30 @@
+{
+  "DVTSourceControlWorkspaceBlueprintPrimaryRemoteRepositoryKey" : "5A074561810718296147B73AD1114B59CDE03519",
+  "DVTSourceControlWorkspaceBlueprintWorkingCopyRepositoryLocationsKey" : {
+
+  },
+  "DVTSourceControlWorkspaceBlueprintWorkingCopyStatesKey" : {
+    "5A074561810718296147B73AD1114B59CDE03519" : 0,
+    "0315FF8454309DF5A50138EE5C6AFF615850773A" : 0
+  },
+  "DVTSourceControlWorkspaceBlueprintIdentifierKey" : "954652BB-A7B3-4771-BCE8-EAF4C5E8C046",
+  "DVTSourceControlWorkspaceBlueprintWorkingCopyPathsKey" : {
+    "5A074561810718296147B73AD1114B59CDE03519" : "iXploreNew\/",
+    "0315FF8454309DF5A50138EE5C6AFF615850773A" : "Onboarding\/"
+  },
+  "DVTSourceControlWorkspaceBlueprintNameKey" : "iXploreNew",
+  "DVTSourceControlWorkspaceBlueprintVersion" : 204,
+  "DVTSourceControlWorkspaceBlueprintRelativePathToProjectKey" : "iXploreNew.xcodeproj",
+  "DVTSourceControlWorkspaceBlueprintRemoteRepositoriesKey" : [
+    {
+      "DVTSourceControlWorkspaceBlueprintRemoteRepositoryURLKey" : "https:\/\/github.com\/ryandavey\/Assignment2a.git",
+      "DVTSourceControlWorkspaceBlueprintRemoteRepositorySystemKey" : "com.apple.dt.Xcode.sourcecontrol.Git",
+      "DVTSourceControlWorkspaceBlueprintRemoteRepositoryIdentifierKey" : "0315FF8454309DF5A50138EE5C6AFF615850773A"
+    },
+    {
+      "DVTSourceControlWorkspaceBlueprintRemoteRepositoryURLKey" : "https:\/\/github.com\/ryandavey\/iXploreNew",
+      "DVTSourceControlWorkspaceBlueprintRemoteRepositorySystemKey" : "com.apple.dt.Xcode.sourcecontrol.Git",
+      "DVTSourceControlWorkspaceBlueprintRemoteRepositoryIdentifierKey" : "5A074561810718296147B73AD1114B59CDE03519"
+    }
+  ]
+}

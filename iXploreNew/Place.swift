@@ -15,34 +15,44 @@ class Place:NSObject, MKAnnotation  {
     var title: String? = ""
     var logoURL:String?
     var favorite:Bool?
+    var detail: String?
     
     class func placeList() -> [Place] {
         
         let place = Place ()
         place.title = "Workshop 17"
-        place.logoURL = "https://avatars1.githubusercontent.com/u/7220596?v=3&s=200"
+        place.logoURL = "ix.png"
         place.coordinate = CLLocationCoordinate2D(latitude: -33.906764,longitude: 18.4164983)
+        place.detail = "place for collaboration and ideation"
         place.favorite = true
         
         let place2 = Place ()
         place2.title = "Truth Coffee"
-        place2.logoURL = "https://robohash.org/123.png"
+        place2.logoURL = "truthcoffee.png"
         place2.coordinate = CLLocationCoordinate2D(latitude: -33.9281976,longitude: 18.4227045)
+        place2.detail = "great social space"
+        place2.favorite = true
         
         let place3 = Place ()
         place3.title = "Chop Chop Coffee"
-        place3.logoURL = "http://cdn3.ixperience.co.za/assets/icons/interview-step-2-801f63110f89e85e38f27d39f5864a1399f256fe0684844caea2a18c4b6fbd33.svg"
+        place3.logoURL = "Coffee.png"
         place3.coordinate = CLLocationCoordinate2D(latitude: -33.9271879,longitude: 18.4327055)
+        place3.detail = "Decent coffee after work"
+        place3.favorite = false
         
         let place4 = Place ()
         place4.title = "Lion's Head"
-        place4.logoURL = "https://upload.wikimedia.org/wikipedia/commons/8/84/Lion's_Head,_Signal_Hill_from_the_Summit_of_Table_Mountain.jpg"
+        place4.logoURL = "images.jpeg"
         place4.coordinate = CLLocationCoordinate2D(latitude: -33.935642,longitude: 18.388713)
+        place4.detail = "Great hiking spot"
+        place4.favorite = false
         
         let place5 = Place ()
         place5.title = "Cape Town Stadium"
-        place5.logoURL = "https://upload.wikimedia.org/wikipedia/commons/d/dc/The_Cape_Town_Stadium_from_Table_Mountain_Cape_Town_066.jpg"
+        place5.logoURL = "stadium.jpeg"
         place5.coordinate = CLLocationCoordinate2D(latitude: 33.904620,longitude: 18.410101)
+        place5.detail = "Soccer place"
+        place5.favorite = false
         
 //        let place6 = Place ()
 //        place6.title = "Workshop 17"
