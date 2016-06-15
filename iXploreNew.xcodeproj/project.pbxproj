@@ -29,6 +29,11 @@
 		D969C1801D100ED100F60A49 /* LoginViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = D969C1771D100ED100F60A49 /* LoginViewController.xib */; };
 		D969C1811D100ED100F60A49 /* RegistrationViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D969C1781D100ED100F60A49 /* RegistrationViewController.swift */; };
 		D969C1821D100ED100F60A49 /* RegistrationViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = D969C1791D100ED100F60A49 /* RegistrationViewController.xib */; };
+		D969C1A91D107FBD00F60A49 /* NewPlaceViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D969C1A71D107FBD00F60A49 /* NewPlaceViewController.swift */; };
+		D969C1AA1D107FBD00F60A49 /* NewPlaceViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = D969C1A81D107FBD00F60A49 /* NewPlaceViewController.xib */; };
+		D969C1AC1D10962300F60A49 /* PersistenceManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = D969C1AB1D10962300F60A49 /* PersistenceManager.swift */; };
+		D969C1AE1D109DCE00F60A49 /* PlacesController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D969C1AD1D109DCE00F60A49 /* PlacesController.swift */; };
+		D969C1B01D10A39700F60A49 /* UserPersistence.swift in Sources */ = {isa = PBXBuildFile; fileRef = D969C1AF1D10A39700F60A49 /* UserPersistence.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -56,6 +61,11 @@
 		D969C1771D100ED100F60A49 /* LoginViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = LoginViewController.xib; sourceTree = "<group>"; };
 		D969C1781D100ED100F60A49 /* RegistrationViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RegistrationViewController.swift; sourceTree = "<group>"; };
 		D969C1791D100ED100F60A49 /* RegistrationViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = RegistrationViewController.xib; sourceTree = "<group>"; };
+		D969C1A71D107FBD00F60A49 /* NewPlaceViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = NewPlaceViewController.swift; sourceTree = "<group>"; };
+		D969C1A81D107FBD00F60A49 /* NewPlaceViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = NewPlaceViewController.xib; sourceTree = "<group>"; };
+		D969C1AB1D10962300F60A49 /* PersistenceManager.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PersistenceManager.swift; sourceTree = "<group>"; };
+		D969C1AD1D109DCE00F60A49 /* PlacesController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PlacesController.swift; sourceTree = "<group>"; };
+		D969C1AF1D10A39700F60A49 /* UserPersistence.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = UserPersistence.swift; path = ../UserPersistence.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -94,6 +104,10 @@
 		D92E33D11D084D7300BF7AD4 = {
 			isa = PBXGroup;
 			children = (
+				D969C1AD1D109DCE00F60A49 /* PlacesController.swift */,
+				D969C1AB1D10962300F60A49 /* PersistenceManager.swift */,
+				D969C1A71D107FBD00F60A49 /* NewPlaceViewController.swift */,
+				D969C1A81D107FBD00F60A49 /* NewPlaceViewController.xib */,
 				D92E33EF1D084D7C00BF7AD4 /* MapKit.framework */,
 				D92E33DC1D084D7300BF7AD4 /* iXploreNew */,
 				D92E33DB1D084D7300BF7AD4 /* Products */,
@@ -113,6 +127,7 @@
 			children = (
 				D92E33DD1D084D7300BF7AD4 /* AppDelegate.swift */,
 				D91902AC1D100E0400CE100D /* UserController.swift */,
+				D969C1AF1D10A39700F60A49 /* UserPersistence.swift */,
 				D969C1731D100ED100F60A49 /* LoggedIn */,
 				D969C17A1D100ED100F60A49 /* Authentication */,
 				D91902AF1D100E5700CE100D /* Place Info */,
@@ -215,6 +230,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				D969C17E1D100ED100F60A49 /* LandingViewController.xib in Resources */,
+				D969C1AA1D107FBD00F60A49 /* NewPlaceViewController.xib in Resources */,
 				D92E33E81D084D7300BF7AD4 /* LaunchScreen.storyboard in Resources */,
 				D969C1801D100ED100F60A49 /* LoginViewController.xib in Resources */,
 				D91902AB1D100C8A00CE100D /* truthcoffee.png in Resources */,
@@ -241,9 +257,13 @@
 				D92E33DE1D084D7300BF7AD4 /* AppDelegate.swift in Sources */,
 				D969C1811D100ED100F60A49 /* RegistrationViewController.swift in Sources */,
 				D91902AD1D100E0400CE100D /* UserController.swift in Sources */,
+				D969C1AE1D109DCE00F60A49 /* PlacesController.swift in Sources */,
 				D969C17F1D100ED100F60A49 /* LoginViewController.swift in Sources */,
 				D969C17B1D100ED100F60A49 /* LoggedInViewController.swift in Sources */,
+				D969C1A91D107FBD00F60A49 /* NewPlaceViewController.swift in Sources */,
 				D92E33F61D088C8B00BF7AD4 /* Place.swift in Sources */,
+				D969C1AC1D10962300F60A49 /* PersistenceManager.swift in Sources */,
+				D969C1B01D10A39700F60A49 /* UserPersistence.swift in Sources */,
 				D92E33F91D08B39D00BF7AD4 /* PlaceTableViewCell.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

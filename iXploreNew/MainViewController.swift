@@ -16,15 +16,43 @@ class MainViewController: UIViewController, UITableViewDelegate, UITableViewData
     
     var deletePlaceIndexPath: NSIndexPath? = nil
     
-    var placeList: [Place] = Place.placeList()
+    var placeList: [Place] = []
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        
+        self.navigationController?.navigationBarHidden = false
+        
+        let plusButton : UIBarButtonItem = UIBarButtonItem(title: "+", style: UIBarButtonItemStyle.Plain, target: self, action: "openModal:")
+        let logButton : UIBarButtonItem = UIBarButtonItem(title: "Logout", style: UIBarButtonItemStyle.Plain, target: self, action: Selector("returnHome:"))
+        PlacesController.sharedInstance.getPlaces()
+        self.navigationItem.leftBarButtonItem = logButton
+        self.navigationItem.rightBarButtonItem = plusButton
         // Do any additional setup after loading the view, typically from a nib.
         self.mapView.delegate = self
         setupMapView()
         setupTableView()
+        
     }
+    
+    override func viewWillAppear(animated: Bool) {
+        placeList = PlacesController.sharedInstance.getPlaces()
+        tableView.reloadData()
+        
+    }
+    
+    /*  OpenModal
+     *
+     *  Opens the NewPlaceViewController as a modal
+     *  excecuted when the + button (on navigation bar) is pressed
+     */
+    func openModal(Sender: UIBarButtonItem!) {
+        let secondViewController:NewPlaceViewController = NewPlaceViewController()
+        self.presentViewController(secondViewController, animated: true, completion: nil)
+        self.navigationController?.navigationBarHidden = false
+
+    }
+    
     
     func setupMapView () {
         self.mapView.mapType = .Hybrid
@@ -34,8 +62,9 @@ class MainViewController: UIViewController, UITableViewDelegate, UITableViewData
         self.tableView.delegate = self
         self.tableView.dataSource = self
         self.tableView.registerClass(PlaceTableViewCell.self, forCellReuseIdentifier: "PlaceTableViewCell")
-//        let nib: UINib = UINib(nibName: "PlaceTableViewCell", bundle: nil)
-//        tableView.registerNib(nib, forCellReuseIdentifier: "PlaceTableViewCell")
+        let control = PlacesController()
+        control.getPlaces()
+        //control.
     }
     
     
@@ -72,7 +101,7 @@ class MainViewController: UIViewController, UITableViewDelegate, UITableViewData
        let place = placeList[indexPath.row]
         cell!.dateLabel!.text = convertedDate
         cell!.placeLabel!.text = self.placeList[indexPath.row].title
-        cell!.placeView!.image = UIImage(named: place.logoURL!)
+//        cell!.placeView!.image = UIImage(named: place.logoURL!)
         cell!.descriptionField!.text = self.placeList[indexPath.row].detail
         return cell!
     }
