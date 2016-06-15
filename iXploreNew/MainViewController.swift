@@ -8,19 +8,30 @@
 
 import UIKit
 import MapKit
+import CoreLocation
 
-class MainViewController: UIViewController, UITableViewDelegate, UITableViewDataSource, MKMapViewDelegate {
+class MainViewController: UIViewController, UITableViewDelegate, UITableViewDataSource, MKMapViewDelegate, CLLocationManagerDelegate {
     
     @IBOutlet weak var mapView: MKMapView!
     @IBOutlet weak var tableView: UITableView!
     
     var deletePlaceIndexPath: NSIndexPath? = nil
-    
+    var locationManager: CLLocationManager?
     var placeList: [Place] = []
     
     override func viewDidLoad() {
         super.viewDidLoad()
         
+        locationManager = CLLocationManager()
+        locationManager?.requestWhenInUseAuthorization()
+        locationManager!.delegate = self
+        
+        self.locationManager!.desiredAccuracy = kCLLocationAccuracyBest
+        
+        self.locationManager!.startUpdatingLocation()
+        
+        self.mapView.showsUserLocation = true
+    
         self.navigationController?.navigationBarHidden = false
         
         let plusButton : UIBarButtonItem = UIBarButtonItem(title: "+", style: UIBarButtonItemStyle.Plain, target: self, action: "openModal:")
@@ -33,6 +44,22 @@ class MainViewController: UIViewController, UITableViewDelegate, UITableViewData
         setupMapView()
         setupTableView()
         
+    }
+    
+    func locationManager(manager: CLLocationManager, didUpdateLocations locations: [CLLocation]) {
+        
+        let location = locations.last! as CLLocation
+        
+        let center = CLLocationCoordinate2D(latitude: location.coordinate.latitude, longitude: location.coordinate.longitude)
+        
+        let region = MKCoordinateRegion(center: center, span: MKCoordinateSpan(latitudeDelta: 1, longitudeDelta: 1))
+        
+        self.mapView.setRegion(region, animated: true)
+        //self.mapView.showsUserLocation = true
+
+        PlacesController.sharedInstance.addPlace(location.coordinate.latitude, longitude: location.coordinate.longitude, title: "Current Location", description: "")
+        
+        locationManager!.stopUpdatingLocation()
     }
     
     override func viewWillAppear(animated: Bool) {
@@ -50,9 +77,7 @@ class MainViewController: UIViewController, UITableViewDelegate, UITableViewData
         let secondViewController:NewPlaceViewController = NewPlaceViewController()
         self.presentViewController(secondViewController, animated: true, completion: nil)
         self.navigationController?.navigationBarHidden = false
-
     }
-    
     
     func setupMapView () {
         self.mapView.mapType = .Hybrid
