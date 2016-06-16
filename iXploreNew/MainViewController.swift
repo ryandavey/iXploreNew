@@ -16,21 +16,13 @@ class MainViewController: UIViewController, UITableViewDelegate, UITableViewData
     @IBOutlet weak var tableView: UITableView!
     
     var deletePlaceIndexPath: NSIndexPath? = nil
-    var locationManager: CLLocationManager?
+    
     var placeList: [Place] = []
     
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        locationManager = CLLocationManager()
-        locationManager?.requestWhenInUseAuthorization()
-        locationManager!.delegate = self
-        
-        self.locationManager!.desiredAccuracy = kCLLocationAccuracyBest
-        
-        self.locationManager!.startUpdatingLocation()
-        
-        self.mapView.showsUserLocation = true
+        //self.mapView.showsUserLocation = true
     
         self.navigationController?.navigationBarHidden = false
         
@@ -46,28 +38,12 @@ class MainViewController: UIViewController, UITableViewDelegate, UITableViewData
         
     }
     
-    func locationManager(manager: CLLocationManager, didUpdateLocations locations: [CLLocation]) {
-        
-        let location = locations.last! as CLLocation
-        
-        let center = CLLocationCoordinate2D(latitude: location.coordinate.latitude, longitude: location.coordinate.longitude)
-        
-        let region = MKCoordinateRegion(center: center, span: MKCoordinateSpan(latitudeDelta: 1, longitudeDelta: 1))
-        
-        self.mapView.setRegion(region, animated: true)
-        //self.mapView.showsUserLocation = true
-
-        PlacesController.sharedInstance.addPlace(location.coordinate.latitude, longitude: location.coordinate.longitude, title: "Current Location", description: "")
-        
-        locationManager!.stopUpdatingLocation()
-    }
-    
     override func viewWillAppear(animated: Bool) {
         placeList = PlacesController.sharedInstance.getPlaces()
         tableView.reloadData()
         
     }
-    
+       
     /*  OpenModal
      *
      *  Opens the NewPlaceViewController as a modal
@@ -89,7 +65,6 @@ class MainViewController: UIViewController, UITableViewDelegate, UITableViewData
         self.tableView.registerClass(PlaceTableViewCell.self, forCellReuseIdentifier: "PlaceTableViewCell")
         let control = PlacesController()
         control.getPlaces()
-        //control.
     }
     
     

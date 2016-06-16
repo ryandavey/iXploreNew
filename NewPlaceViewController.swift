@@ -31,7 +31,10 @@ class NewPlaceViewController: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        
+        let appDelegate: AppDelegate = UIApplication.sharedApplication().delegate as! AppDelegate
+        var newLocation = appDelegate.location
+        latitudeField.text = String(newLocation.coordinate.latitude)
+        longitudeField.text = String(newLocation.coordinate.longitude)
         // Do any additional setup after loading the view.
     }
 

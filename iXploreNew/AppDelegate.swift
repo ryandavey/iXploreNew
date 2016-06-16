@@ -17,9 +17,14 @@ class AppDelegate: UIResponder, UIApplicationDelegate, MKMapViewDelegate,CLLocat
     var location: CLLocation!
     var mainNavigationController: UINavigationController?
     
+    var locationManager: CLLocationManager?
+    
     func application(application: UIApplication, didFinishLaunchingWithOptions launchOptions: [NSObject: AnyObject]?) -> Bool {
-        
-        
+    
+        locationManager = CLLocationManager()
+        locationManager?.requestWhenInUseAuthorization()
+        locationManager!.delegate = self
+        self.locationManager!.desiredAccuracy = kCLLocationAccuracyBest
         
         // Override point for customization after application launch.
         self.window = UIWindow(frame: UIScreen.mainScreen().bounds)
@@ -34,11 +39,42 @@ class AppDelegate: UIResponder, UIApplicationDelegate, MKMapViewDelegate,CLLocat
         return true
     }
     
+    func locationManager(manager: CLLocationManager, didUpdateLocations locations: [CLLocation]) {
+        
+        location = locations.last! as CLLocation
+        
+        //        let center = CLLocationCoordinate2D(latitude: location.coordinate.latitude, longitude: location.coordinate.longitude)
+        //
+        //        let region = MKCoordinateRegion(center: center, span: MKCoordinateSpan(latitudeDelta: 1, longitudeDelta: 1))
+        //
+        //        self.mapView.setRegion(region, animated: true)
+        print(location)
+        
+        PlacesController.sharedInstance.addPlace(location.coordinate.latitude, longitude: location.coordinate.longitude, title: "Current Location", description: "")
+        
+        locationManager!.stopUpdatingLocation()
+    }
+    
     func locationManager(manager:CLLocationManager, didChangeAuthorizationStatus status: CLAuthorizationStatus) {
-        if status == CLAuthorizationStatus.AuthorizedWhenInUse {
-            print("permission ganted")
-        } else if status == CLAuthorizationStatus.Denied {
-            print("permission denied")
+        switch status {
+        case .NotDetermined:
+            locationManager!.requestAlwaysAuthorization()
+            break
+        case .AuthorizedWhenInUse:
+            locationManager!.startUpdatingLocation()
+            
+            break
+        case .AuthorizedAlways:
+            locationManager!.startUpdatingLocation()
+            break
+        case .Restricted:
+            // restricted by e.g. parental controls. User can't enable Location Services
+            break
+        case .Denied:
+            // user denied your app access to Location Services, but can grant access from Settings.app
+            break
+        default:
+            break
         }
     }
     
